@@ -231,25 +231,24 @@ header.top nav a:hover { border-color: var(--red); }
 .tdesc b { font-family: var(--f-serif); }
 .promo .note { font-size: .8125rem; color: var(--muted); }
 .demo { position: relative; width: 100%; max-width: 440px; justify-self: center; aspect-ratio: 600 / 760; background: radial-gradient(60% 50% at 50% 55%, #f4f4f4, #fff 70%); }
-.demo .base { position: absolute; inset: 0; transition: opacity .5s ease, transform .5s ease; }
+.demo .base { position: absolute; inset: 0; opacity: 0; transform: scale(.96); transition: opacity .5s ease, transform .5s ease; }
 .demo .base img { display: block; width: 100%; height: 100%; max-width: 100%; }
-.demo .benzin { opacity: 0; transform: scale(.96); }
-.demo[data-t="laser"] .slider { opacity: 0; transform: scale(.96); }
-.demo[data-t="laser"] .benzin { opacity: 1; transform: none; }
-.demo .ov { position: absolute; display: grid; place-items: center; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
-.demo[data-t="sieb"] .ov.sieb, .demo[data-t="tampon"] .ov.tampon, .demo[data-t="digital"] .ov.digital, .demo[data-t="laser"] .ov.laser { opacity: 1; }
-.demo .slider .ov { left: 36.5%; width: 27.5%; top: 33%; height: 54%; }
-.demo .ov svg { display: block; width: 180%; height: auto; transform: rotate(-90deg); flex: none; }
+.demo[data-t="sieb"] .slider, .demo[data-t="digital"] .slider, .demo[data-t="tampon"] .rubber, .demo[data-t="laser"] .flask { opacity: 1; transform: none; }
+.demo .ov { position: absolute; display: grid; place-items: center; opacity: 0; transition: opacity .45s ease; pointer-events: none; overflow: hidden; }
+.demo[data-t="sieb"] .ov.sieb, .demo[data-t="tampon"] .ov.tampon, .demo[data-t="digital"] .ov.digital { opacity: 1; }
+.demo .slider .ov { left: 39.24%; top: 26.02%; width: 22.59%; height: 67.78%; }
+.demo .rubber .ov { left: 25.26%; top: 36.17%; width: 43.71%; height: 50.42%; }
+.demo .ov svg { display: block; height: auto; flex: none; }
 .demo .ov.sieb { color: #8C0808; }
-.demo .ov.tampon { color: #1d1d1d; gap: 0; }
-.demo .ov.tampon svg { width: 120%; }
-.demo .ov.digital { left: 34.6%; width: 31.4%; top: 26%; height: 66.5%; border-radius: 3px 3px 10px 10px; color: #fff; overflow: hidden;
-  background: linear-gradient(160deg, #F7B500 0%, #E8473B 38%, #8C0808 62%, #2F80C3 100%); mix-blend-mode: multiply; }
-.demo .ov.digital::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.55), transparent 40%), repeating-linear-gradient(135deg, rgba(255,255,255,.12) 0 6px, transparent 6px 14px); }
-.demo .ov.digital svg { position: relative; mix-blend-mode: normal; }
-.demo .benzin .ov.laser { left: 24%; width: 56%; top: 53%; height: 30%; color: rgba(55,55,55,.75); mix-blend-mode: multiply; filter: drop-shadow(0 1px 0 rgba(255,255,255,.7)); }
-.demo .benzin .ov.laser svg { width: 100%; transform: none; }
-.demo .label { position: absolute; left: 0; bottom: -6px; font-size: .6875rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.demo .ov.sieb svg { width: 230%; transform: rotate(-90deg); }
+.demo .ov.digital { color: #fff; background: linear-gradient(170deg, #F7B500 0%, #E8473B 36%, #8C0808 62%, #2F80C3 100%); mix-blend-mode: multiply; }
+.demo .ov.digital::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 18%, rgba(255,255,255,.5), transparent 42%), repeating-linear-gradient(135deg, rgba(255,255,255,.12) 0 6px, transparent 6px 14px); }
+.demo .ov.digital svg { position: relative; width: 230%; transform: rotate(-90deg); }
+.demo .ov.tampon { color: #EDEDED; }
+.demo .ov.tampon svg { width: 82%; }
+.demo .label { position: absolute; left: 0; right: 0; bottom: -6px; font-size: .6875rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.demo .label span { display: none; }
+.demo[data-t="sieb"] .label [data-t="sieb"], .demo[data-t="tampon"] .label [data-t="tampon"], .demo[data-t="digital"] .label [data-t="digital"], .demo[data-t="laser"] .label [data-t="laser"] { display: inline; }
 @media (max-width: 860px) {
   .promo .wrap { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .promo .ptext { display: contents; }
@@ -497,9 +496,9 @@ footer .copy { font-size: .8125rem; }
         </div>
         <div class="tdesc" id="tech-desc" role="tabpanel" aria-live="polite">
           <p data-t="sieb"><b>Siebdruck</b> – kräftige, deckende Volltonfarben. Ideal für klare ein- oder mehrfarbige Logos.</p>
-          <p data-t="tampon" hidden><b>Tampondruck</b> – feine Details, auch auf gewölbten Flächen. Für präzise Logos und Schriftzüge.</p>
-          <p data-t="digital" hidden><b>Digitaldruck</b> – vollfarbig mit Verläufen und Bildmotiven. Für Designs ohne Farbgrenzen.</p>
-          <p data-t="laser" hidden><b>Lasergravur</b> – dauerhaft eingraviert und edel. Besonders wirkungsvoll auf Metallfeuerzeugen.</p>
+          <p data-t="tampon" hidden><b>Tampondruck</b> – feine Details, auch auf gewölbten Flächen. Für präzise Logos und Schriftzüge, auch hell auf dunklen Modellen.</p>
+          <p data-t="digital" hidden><b>Digitaldruck</b> – vollfarbig mit Verläufen und Bildmotiven, bis zur maximalen Druckfläche. Für Designs ohne Farbgrenzen.</p>
+          <p data-t="laser" hidden><b>Lasergravur</b> – dauerhaft eingraviert und edel. Besonders wirkungsvoll auf Metall, etwa auf Flachmännern oder Metallfeuerzeugen.</p>
         </div>
         <p class="note">Welche Veredelung möglich ist, hängt vom Modell ab.</p>
         <a class="btn red" href="https://www.kp-plattner.at/Werbefeuerzeuge/Feuerzeuge_WF?filter_marke=ZORR" target="_blank" rel="noopener">Alle ZORR® Werbefeuerzeuge bei KP Plattner <span class="arr" aria-hidden="true">→</span></a>
@@ -507,13 +506,13 @@ footer .copy { font-size: .8125rem; }
       <div class="demo rv" data-t="sieb" aria-hidden="true">
         <div class="base slider"><img src="img/werbe/demo-slider.webp" alt="" width="600" height="760" loading="lazy">
           <div class="ov sieb"><svg viewBox="0 0 200 80"><use href="#demo-logo"/></svg></div>
-          <div class="ov tampon"><svg viewBox="0 0 200 80"><use href="#demo-logo"/></svg></div>
           <div class="ov digital"><svg viewBox="0 0 200 80"><use href="#demo-logo"/></svg></div>
         </div>
-        <div class="base benzin"><img src="img/werbe/demo-benzin.webp" alt="" width="600" height="760" loading="lazy">
-          <div class="ov laser"><svg viewBox="0 0 200 80"><use href="#demo-logo"/></svg></div>
+        <div class="base rubber"><img src="img/werbe/demo-rubber.webp" alt="" width="600" height="760" loading="lazy">
+          <div class="ov tampon"><svg viewBox="0 0 200 80"><use href="#demo-logo"/></svg></div>
         </div>
-        <span class="label">Beispiel: Ihr Logo</span>
+        <div class="base flask"><img src="img/werbe/demo-flachmann.webp" alt="" width="600" height="760" loading="lazy"></div>
+        <span class="label"><span data-t="sieb">Beispiel: Ihr Logo im Siebdruck</span><span data-t="tampon">Beispiel: Ihr Logo im Tampondruck</span><span data-t="digital">Beispiel: maximale Druckfläche im Digitaldruck</span><span data-t="laser">Beispiel: Lasergravur auf Flachmann</span></span>
       </div>
     </div>
   </section>
